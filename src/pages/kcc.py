@@ -556,10 +556,6 @@ def register_callbacks(app):
             end_date_date = datetime.datetime.strptime(end_date, "%Y-%m-%d").date()
 
         filtered_df = df2
-        filtered_df = filtered_df[
-            (filtered_df["Date"] >= start_date_date)
-            & (filtered_df["Date"] <= end_date_date)
-        ]
         state_name_caps = selected_state if selected_state else None
         district_name_caps = selected_district if selected_district else None
         print(state_name_caps, district_name_caps)
@@ -570,6 +566,11 @@ def register_callbacks(app):
         if district_name_caps is not None:
             filtered_df = filtered_df[filtered_df["DistrictName"] == district_name_caps]
             title = f"Time Series for {selected_district} of {selected_state}"
+
+        filtered_df = filtered_df[
+            (filtered_df["Date"] >= start_date_date)
+            & (filtered_df["Date"] <= end_date_date)
+        ]
 
         filtered_df["cluster_id"] = filtered_df["QueryType"].map(query_to_cluster)
         filtered_df["cluster_id"] = filtered_df["cluster_id"].astype(str)

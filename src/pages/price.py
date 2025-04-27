@@ -259,7 +259,7 @@ layout = html.Div(
                         "padding": "5px",
                     },
                 ),
-                dcc.Store(id="selected-state-store", data=None),
+                # dcc.Store(id="selected-state-store", data=None),
             ],
             style={
                 "display": "flex",
@@ -385,11 +385,11 @@ def register_callbacks(app):
         Output("seasonal-plot", "figure"),
         Output("forecast-plot", "figure"),
         Output("variety-histogram", "figure"),
-        Input("selected-state-store", "data"),
+        # Input("selected-state-store", "data"),
         Input("crop-dropdown", "value"),
         Input("mean-variance-dropdown", "value"),
     )
-    def update_time_series(selected_state, crop_id, stat_choice):
+    def update_time_series(crop_id, stat_choice):
         crop_name = crop_mapping[crop_id]
         print(crop_name)
         crop_data = df[df["CropName"] == crop_id]
