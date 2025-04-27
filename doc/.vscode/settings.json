@@ -1,0 +1,53 @@
+{
+    "latex-workshop.intellisense.citation.backend": "biblatex",
+    // (in this file you may have also configured outdir, recipes and tools)
+    "latex-workshop.latex.outDir": "%DIR%/build/",
+    "latex-workshop.synctex.synctexjs.enabled": true, // from code to pdf: mac: cmd+option+j, from pdf to code: cmd + click
+    "latex-workshop.synctex.afterBuild.enabled": true,
+    "latex-workshop.view.pdf.viewer": "tab",
+    "latex-workshop.latex.tools": [
+        {
+            "name": "latexmk",
+            "command": "latexmk",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-pdf",
+                "-outdir=%OUTDIR%",
+                "%DOCFILE%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "pdflatex",
+            "command": "pdflatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-outdir=%OUTDIR%",
+                "%DOCFILE%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "bibtex",
+            "command": "bibtex",
+            "args": [
+                "--output-directory=%OUTDIR%",
+                "%DOCFILE%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "biber",
+            "command": "biber",
+            "args": [
+                "--output-directory=%OUTDIR%",
+                "%DOCFILE%"
+            ],
+            "env": {}
+        },
+    ]
+}

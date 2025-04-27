@@ -1,0 +1,124 @@
+\documentclass[11pt]{article}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+\usepackage[colorlinks=true, linkcolor=blue, urlcolor=blue, citecolor=green]{hyperref}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{tabularx}
+\usepackage[dvipsnames]{xcolor}
+
+
+\title{\Large{\bf CS661: Big Data Visual Analytics \\ Project Proposal Report} \\
+\huge \bf AgriViz: Analysing Farmer Queries with Data}
+
+\date{\textbf{Group 3}}
+
+\author{\textbf{Siddharth Kalra}\\
+211032
+\and
+\textbf{Aniket Suhas Borkar}\\
+210135
+\and
+\textbf{Chitwan Goel}\\
+210295
+\and
+\textbf{Kartik Anant Kulkarni}\\
+210493
+\and
+\textbf{Geetika}\\
+210392
+\and
+\textbf{Vikas Yadav}\\
+211166
+\and 
+\textbf{Divyansh} \\
+210355
+\and
+\textbf{Shrey Bansal} \\
+210997
+}
+
+\begin{document}
+
+\maketitle
+
+\section{Motivation and Introduction}
+Agriculture in India employs 45\% of India's workforce and contributes to $\sim$18\% of GDP, yet farmers continue to face challenges related to weather, market prices, and government policies. A large section of Indian farmers still rely on informal sources of information for crucial agricultural advice, often leading to misinformation and financial losses. Kisan Call Centers offer a toll-free helpline for farmers to obtain agricultural information. However, this data exists in raw, unstructured formats. By structuring and visualizing this large-scale Kisan query data and combining with the available price data, we can provide valuable insights into the issues faced by farmers of India and empower policymakers and agribusinesses to make data-driven decisions.
+
+\section{Data Source and Description}
+
+We propose to use 2 different data sources as follows:
+
+\subsection*{\makebox[0.98\textwidth][l]{Dataset 1: Kisan Call Center Query Data \hfill \hfill \normalfont \small \href{https://www.data.gov.in/resource/kisan-call-centre-kcc-transcripts-farmers-queries-answers}{\textit{(Link)}}}}
+
+This dataset contains queries made to Kisan Call Centre. The historical data for the past 15+ years is available on the Indian Government Website with attributes such as Location, Season, Sector, Category and Crops with the query and the provided response. The raw dataset contains more than 4 million data points.
+
+% The following fields from this dataset are used for the project:
+
+% \begin{itemize}
+%     \item  Location (state/district/block etc): Used in cloropleth map
+%     \item Season: Used in filtering
+%     \item Sector: Used in filtering
+%     \item Category: Used in filtering and shown as pie chart 
+%     \item Crops: Used filtering, histogram(focus and zoom)
+% created on: time series and distribution
+
+% \end{itemize}
+
+\subsection*{\makebox[0.98\textwidth][l]{Dataset 2: Crop Price Data \hfill \hfill \normalfont \small \href{https://agmarknet.gov.in}{\textit{(Link)}}}}
+
+This data set contains crop price and crop production volume data for past 10 years for different crops in different markets of the country. It is provided with attributes such as locations, variety, group, arrivals and price with the time variation. The raw data set has more than 10 million data points.
+
+% location(state/ district/ market): cloropleth map
+% variety: filtering and pie chart
+% group: filtering and pie chart
+% arrivals: time series
+% price: time series
+
+% \section{Project Description}
+
+\section{Specific Tasks}
+
+\begin{enumerate}
+    \item \textbf{Data Collection}: The datasets need to be scraped from the websites mentioned above.
+    \item \textbf{Data Wrangling}: The data has missing values and needs to be cleaned appropriately.
+    \item \textbf{Machine Learning Analytics:} Apply NLP and clustering algorithms for segregating query data into themes and clusters.
+    \item \textbf{Visualization:} Create an interactive dashboard with various plots as detailed in the following section.
+    \item \textbf{Analysis and Insights:} Perform a thorough analysis, deriving insights from the visualizations into the various farmer concerns and suggest possible measures that could be implemented to make the system more effective.
+    
+\end{enumerate}
+
+\section{Overall Solution}
+
+In this project, we will create a \textbf{web-based dashboard} for query and price analysis in the \textbf{domain of agriculture}. The interactive visualizations will be prepared using the \textbf{d3.js} library highlighting farmer concerns, for e.g., geospatial heatmaps of query distributions, time-series analysis of seasonal issues, etc. The \textbf{Python}-based backend will provide support for NLP-based topic modeling and help identify trends in queries. The dashboard will provide options for grouping concerns regionally and temporally, while other dynamic charts will analyze the market price fluctuations and farmer queries. These insights can help government officials detect early signs of agricultural distress and enable market regulators to stabilize crop pricing policies.
+
+\section{Visualization Description}
+
+Our project will include visualizations broadly under the following categories:
+\begin{enumerate}
+    \item \textbf{Choropleth Map:} It is a thematic map that uses colors and symbols to visualize the data values across a geographic area. Since both datasets involve geographic variation, we can map the data values to the corresponding geolocations, with appropriate granularity. Further, these charts would also be used for overviewing and dynamically filtering into corresponding time series (eg: price, query frequency, etc.).
+
+    \item \textbf{Clustered query Categorization and Visualization:} Categorize queries into themes (e.g. government schemes, pricing, plant protection, etc.) and visualize them using tree maps and pie-charts corresponding to filtered datasets (interactively).
+    
+    \item \textbf{Word Cloud and Topic Modeling:} Display frequently occurring words from queries using NLP in order to gain insight into the farmer concerns.
+    
+    \item \textbf{Time Series Visualization:} Price analytics and Query frequency distribution evolution with time will be plotted with a filter-and-zoom methodology, to pinpoint relevant parts of the data and derive insights.
+    
+    \item \textbf{Correlation Plots:} Plot correlations between attributes for both datasets. For eg: Price of a particular crop across different districts, price of different crops in the same regions, etc.
+\end{enumerate}
+
+\section{Work Distribution}
+Following is the tentative assignment of roles and responsibilities within our team; however, as deemed necessary, we may alter the distribution, while ensuring fair and balanced workload.
+
+\begin{enumerate}
+    \item \textbf{Chitwan Goel - }Backend Development and Machine Learning
+    \item \textbf{Kartik Anant Kulkarni - }Machine Learning and Visualization Module
+    \item \textbf{Siddharth Kalra - }Frontend Development and Machine Learning
+    \item \textbf{Aniket Suhas Borkar - }Database Management and Application Hosting
+    \item \textbf{Shrey Bansal - }Database Management and Application Hosting
+    \item \textbf{Geetika - }Backend Development and Application Hosting
+    \item \textbf{Divyansh - }Frontend Development and Visualization Module
+    \item \textbf{Vikas Yadav - }Frontend Development and Visualization Module
+\end{enumerate}
+
+\end{document}
+
