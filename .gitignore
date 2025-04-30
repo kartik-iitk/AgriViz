@@ -1,0 +1,10 @@
+**/.DS_Store
+**/.idea
+**/__pycache__
+**/*.pyc
+**/*.pyo
+**/*.pyd
+**/__pycache__/
+data/*
+*.parquet
+
